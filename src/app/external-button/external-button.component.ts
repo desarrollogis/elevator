@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { ControllerService } from '../controller.service';
 
 @Component({
   selector: 'app-external-button',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./external-button.component.scss']
 })
 export class ExternalButtonComponent implements OnInit {
+  @Input() floor: number = 0;
+  @Input() type: string = '';
 
-  constructor() { }
+  constructor(public controllerService: ControllerService) { }
 
   ngOnInit() {
   }
-
 }

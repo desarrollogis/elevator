@@ -6,15 +6,21 @@
   <div style="width: 50px; height: 100%; float: right;">
     <div style="height: 25%;">
       <app-floor-indicator floor="{{this.controllerService.currentFloor}}"></app-floor-indicator>
+      <app-external-button floor="3" type="down"></app-external-button>
     </div>
     <div style="height: 25%;">
       <app-floor-indicator floor="{{this.controllerService.currentFloor}}"></app-floor-indicator>
+      <app-external-button floor="2" type="up"></app-external-button>
+      <app-external-button floor="2" type="down"></app-external-button>
     </div>
     <div style="height: 25%;">
       <app-floor-indicator floor="{{this.controllerService.currentFloor}}"></app-floor-indicator>
+      <app-external-button floor="1" type="up"></app-external-button>
+      <app-external-button floor="1" type="down"></app-external-button>
     </div>
     <div style="height: 25%;">
       <app-floor-indicator floor="{{this.controllerService.currentFloor}}"></app-floor-indicator>
+      <app-external-button floor="0" type="up"></app-external-button>
     </div>
   </div>
 </div>
