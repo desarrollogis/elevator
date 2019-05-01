@@ -4,8 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ControllerService {
-  currentFloor: number = 0;
   goals = [];
+  currentFloor: number = 0;
+  doorStatus = 'close';
   transitionFloor: number = 0;
 
   constructor() { }
@@ -19,7 +20,7 @@ export class ControllerService {
 
     if (nextGoal === this.currentFloor) {
       this.goals.shift();
-      this.move();
+      this.doorStatus = 'open';
       return;
     }
     if (nextGoal < this.currentFloor) {

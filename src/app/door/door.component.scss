@@ -1,0 +1,14 @@
+div.door {
+	background-color: yellow;
+	margin-left: 10px;
+	width: 130px;
+	height: 120px;
+	&.open {
+		width: 30px;
+		transition: width 1s ease 0s;
+	}
+	&.close {
+		width: 130px;
+		transition: width 1s ease 0s;
+	}
+}

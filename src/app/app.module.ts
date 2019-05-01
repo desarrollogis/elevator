@@ -7,6 +7,7 @@ import { ElevatorComponent } from './elevator/elevator.component';
 import { InternalButtonComponent } from './internal-button/internal-button.component';
 import { ExternalButtonComponent } from './external-button/external-button.component';
 import { FloorIndicatorComponent } from './floor-indicator/floor-indicator.component';
+import { DoorComponent } from './door/door.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FloorIndicatorComponent } from './floor-indicator/floor-indicator.compo
     ElevatorComponent,
     InternalButtonComponent,
     ExternalButtonComponent,
-    FloorIndicatorComponent
+    FloorIndicatorComponent,
+    DoorComponent
   ],
   imports: [
     BrowserModule
