@@ -6,6 +6,7 @@ import { CubeComponent } from './cube/cube.component';
 import { ElevatorComponent } from './elevator/elevator.component';
 import { InternalButtonComponent } from './internal-button/internal-button.component';
 import { ExternalButtonComponent } from './external-button/external-button.component';
+import { FloorIndicatorComponent } from './floor-indicator/floor-indicator.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { ExternalButtonComponent } from './external-button/external-button.compo
     CubeComponent,
     ElevatorComponent,
     InternalButtonComponent,
-    ExternalButtonComponent
+    ExternalButtonComponent,
+    FloorIndicatorComponent
   ],
   imports: [
     BrowserModule

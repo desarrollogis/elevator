@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cube.component.scss']
 })
 export class CubeComponent implements OnInit {
+  currentFloor: number = 0;
 
   constructor() { }
 
   ngOnInit() {
   }
-
 }

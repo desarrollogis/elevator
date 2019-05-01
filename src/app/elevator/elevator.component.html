@@ -1,6 +1,6 @@
-<div class="elevator floor-0">
-  <app-internal-button type="0"></app-internal-button>
-  <app-internal-button type="1"></app-internal-button>
-  <app-internal-button type="2"></app-internal-button>
-  <app-internal-button type="3"></app-internal-button>
+<div class="elevator floor-{{this.floor}}">
+  <app-internal-button type="0" (click)="this.move(0)"></app-internal-button>
+  <app-internal-button type="1" (click)="this.move(1)"></app-internal-button>
+  <app-internal-button type="2" (click)="this.move(2)"></app-internal-button>
+  <app-internal-button type="3" (click)="this.move(3)"></app-internal-button>
 </div>

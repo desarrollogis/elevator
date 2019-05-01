@@ -1,4 +1,20 @@
 <div class="cube">
-  <app-elevator>
-  </app-elevator>
+  <div style="width: 150px; height: 100%; float: left;">
+    <app-elevator>
+    </app-elevator>
+  </div>
+  <div style="width: 50px; height: 100%; float: right;">
+    <div style="height: 25%;">
+      <app-floor-indicator floor="{{this.currentFloor}}"></app-floor-indicator>
+    </div>
+    <div style="height: 25%;">
+      <app-floor-indicator floor="{{this.currentFloor}}"></app-floor-indicator>
+    </div>
+    <div style="height: 25%;">
+      <app-floor-indicator floor="{{this.currentFloor}}"></app-floor-indicator>
+    </div>
+    <div style="height: 25%;">
+      <app-floor-indicator floor="{{this.currentFloor}}"></app-floor-indicator>
+    </div>
+  </div>
 </div>

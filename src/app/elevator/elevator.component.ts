@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./elevator.component.scss']
 })
 export class ElevatorComponent implements OnInit {
+  floor: number = 0;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  move(floor: number) {
+    this.floor = floor;
+  }
 }
