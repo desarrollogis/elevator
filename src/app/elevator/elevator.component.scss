@@ -1,7 +1,20 @@
 div.elevator {
-	position: relative;
-	bottom: 25%;
 	background-color: brown;
-	width: 100%;
+	width: 150px;
 	height: 25%;
+	position: relative;
+	top: 450px;
+	transition: top 2s ease 0s;
+	&.floor-0 {
+		top: 450px;
+	}
+	&.floor-1 {
+		top: 300px;
+	}
+	&.floor-2 {
+		top: 150px;
+	}
+	&.floor-3 {
+		top: 0px;
+	}
 }
