@@ -15,6 +15,9 @@ export class ControllerService {
     if (this.goals.length < 1) {
       return;
     }
+    if (this.doorStatus === 'open') {
+      return;
+    }
 
     const nextGoal = parseInt(this.goals[0], 10);
 
