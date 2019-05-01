@@ -12,4 +12,16 @@ export class ElevatorComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  ngAfterViewChecked() {
+    const elements = document.getElementsByClassName('elevator');
+
+    console.log(elements.length);
+    for (let i = 0, m = elements.length; i < m; ++i) {
+      elements[i].addEventListener('transitionend', () => {
+        this.controllerService.currentFloor = this.controllerService.transitionFloor;
+        this.controllerService.move();
+      });
+    }
+  }
 }

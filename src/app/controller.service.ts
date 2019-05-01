@@ -15,7 +15,7 @@ export class ControllerService {
       return;
     }
 
-    const nextGoal = this.goals[0];
+    const nextGoal = parseInt(this.goals[0], 10);
 
     if (nextGoal === this.currentFloor) {
       this.goals.shift();
