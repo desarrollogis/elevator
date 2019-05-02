@@ -105,4 +105,8 @@ export class ControllerService {
   public getDoorStatus() {
     return this._doorStatus;
   }
+
+  public getCurrentFloor() {
+    return this._currentFloor;
+  }
 }
