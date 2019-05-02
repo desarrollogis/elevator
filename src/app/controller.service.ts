@@ -43,7 +43,9 @@ export class ControllerService {
 
   go(floor: number) {
     this.goals.push(floor);
-    this.goals.push(-1);
+    if (floor > -1) {
+      this.goals.push(-1);
+    }
     this.move();
   }
 }
