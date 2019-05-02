@@ -22,7 +22,7 @@ export class ControllerService {
       return;
     }
 
-    const nextGoal = parseInt(this.goals[0], 10);
+    const nextGoal = this.goals[0];
 
     if (nextGoal === -1) {
       this.goals.shift();
@@ -41,27 +41,34 @@ export class ControllerService {
     }
   }
 
-  addGoal(floor: string) {
-    if ((this.goals.length > 0) && (this.goals[this.goals.length - 1] === floor)) {
+  private _addGoal(floor: number) {
+    if (this.goals.findIndex(element => (element === floor)) > -1) {
       return;
     }
     this.goals.push(floor);
+    console.log(this.goals);
   }
 
-  go(floor: string) {
-    switch (floor) {
-      case '-2':
+  public go(floor: string) {
+    const nFloor = parseInt(floor, 10);
+
+    switch (nFloor) {
+      case -2:
         if (this.doorStatus === 'open') {
           this.doorStatus = 'close';
         }
         return;
-      case '0':
-      case '1':
-      case '2':
-      case '3':
-        this.addGoal(floor);
-      case '-1':
-        this.addGoal('-1');
+      case 0:
+      case 1:
+      case 2:
+      case 3:
+        if (nFloor != this.currentFloor) {
+          this._addGoal(nFloor);
+        }
+      case -1:
+        if (this.doorStatus === 'close') {
+          this._addGoal(-1);
+        }
         this.move();
         break;
     }
