@@ -25,11 +25,7 @@ export class DoorComponent implements OnInit {
     for (let i = 0, m = elements.length; i < m; ++i) {
       this.events = true;
       elements[i].addEventListener('transitionend', () => {
-        if (this.controllerService.doorStatus === 'open') {
-          setTimeout(() => {
-            this.controllerService.doorStatus = 'close';
-          }, 3000);
-        }
+        this.controllerService.doorEvent();
       });
     }
   }

@@ -6,16 +6,29 @@ import { Injectable } from '@angular/core';
 export class ControllerService {
   goals = [];
   currentFloor: number = 0;
-  doorStatus = 'close';
+  doorStatus = 'closed';
   transitionFloor: number = 0;
 
   constructor() { }
+
+  public doorEvent() {
+    if (this.doorStatus === 'opening') {
+      this.doorStatus = 'open';
+      setTimeout(() => {
+        this.doorStatus = 'closing';
+      }, 3000);
+      return;
+    }
+    if (this.doorStatus === 'closing') {
+      this.doorStatus = 'closed';
+    }
+  }
 
   public open() {
     if (this.transitionFloor !== this.currentFloor) {
       return;
     }
-    this.doorStatus = 'open';
+    this.doorStatus = 'opening';
   }
 
   public close() {
@@ -39,7 +52,7 @@ export class ControllerService {
 
     if (nextGoal === this.currentFloor) {
       this.goals.shift();
-      this.doorStatus = 'open';
+      this.open();
       return;
     }
     if (nextGoal < this.currentFloor) {

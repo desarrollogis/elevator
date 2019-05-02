@@ -3,12 +3,18 @@ div.door {
 	margin-left: 10px;
 	width: 150px;
 	height: 110px;
-	&.open {
+	&.opening {
 		width: 30px;
 		transition: width 1s ease 0s;
 	}
-	&.close {
+	&.open {
+		width: 30px;
+	}
+	&.closing {
 		width: 150px;
 		transition: width 1s ease 0s;
+	}
+	&.closed {
+		width: 150px;
 	}
 }
