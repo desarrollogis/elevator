@@ -8,11 +8,22 @@ import { ControllerService } from '../controller.service';
   styleUrls: ['./internal-button.component.scss']
 })
 export class InternalButtonComponent implements OnInit {
-  @Input() floor: number = 0;
+  @Input() floor: string = '';
+  label: string = '';
 
-  constructor(public controllerService: ControllerService) {
-  }
+  constructor(public controllerService: ControllerService) {}
 
   ngOnInit() {
+    switch (this.floor) {
+      case '-2':
+        this.label = '><';
+        break;
+      case '-1':
+        this.label = '<>';
+        break;
+      default:
+        this.label = this.floor;
+        break;
+    }
   }
 }
