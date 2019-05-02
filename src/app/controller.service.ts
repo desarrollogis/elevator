@@ -4,74 +4,80 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ControllerService {
-  goals = [];
-  currentFloor: number = 0;
-  doorStatus = 'closed';
-  transitionFloor: number = 0;
+  private _doorStatus = 'closed';
+  private _goals = [];
+  private _currentFloor: number = 0;
+  private _transitionFloor: number = 0;
 
   constructor() { }
 
   public doorEvent() {
-    if (this.doorStatus === 'opening') {
-      this.doorStatus = 'open';
+    if (this._doorStatus === 'opening') {
+      this._doorStatus = 'open';
       setTimeout(() => {
-        this.doorStatus = 'closing';
+        if (this._doorStatus === 'open') {
+          this._doorStatus = 'closing';
+        }
       }, 3000);
       return;
     }
-    if (this.doorStatus === 'closing') {
-      this.doorStatus = 'closed';
+    if (this._doorStatus === 'closing') {
+      this._doorStatus = 'closed';
     }
   }
 
   public open() {
-    if (this.transitionFloor !== this.currentFloor) {
+    if (this._doorStatus === 'open') {
       return;
     }
-    this.doorStatus = 'opening';
+    if (this._transitionFloor !== this._currentFloor) {
+      return;
+    }
+    this._doorStatus = 'opening';
   }
 
   public close() {
-    if (this.doorStatus === 'open') {
-      this.doorStatus = 'close';
+    if (this._doorStatus === 'closed') {
+      return;
     }
+    this._doorStatus = 'closing';
   }
 
   private _move() {
-    if (this.goals.length < 1) {
+    if (this._goals.length < 1) {
       return;
     }
-    if (this.doorStatus !== 'closed') {
+    if (this._doorStatus !== 'closed') {
       return;
     }
-    if (this.transitionFloor !== this.currentFloor) {
+    if (this._transitionFloor !== this._currentFloor) {
       return;
     }
 
-    const nextGoal = this.goals[0];
+    const nextGoal = this._goals[0];
 
-    if (nextGoal === this.currentFloor) {
-      this.goals.shift();
+    if (nextGoal === this._currentFloor) {
+      this._goals.shift();
       this.open();
       return;
     }
-    if (nextGoal < this.currentFloor) {
-      this.transitionFloor = this.currentFloor - 1;
+    if (nextGoal < this._currentFloor) {
+      this._transitionFloor = this._currentFloor - 1;
     } else {
-      this.transitionFloor = this.currentFloor + 1;
+      this._transitionFloor = this._currentFloor + 1;
     }
   }
 
   public arrivedToFloor() {
-    this.currentFloor = this.transitionFloor;
+    this._currentFloor = this._transitionFloor;
     this._move();
   }
 
   private _addGoal(floor: number) {
-    if (this.goals.findIndex(element => (element === floor)) > -1) {
+    if (this._goals.findIndex(element => (element === floor)) > -1) {
       return;
     }
-    this.goals.push(floor);
+    this._goals.push(floor);
   }
 
   public go(floor: string) {
@@ -82,7 +88,7 @@ export class ControllerService {
       case 1:
       case 2:
       case 3:
-        if (nFloor === this.currentFloor) {
+        if (nFloor === this._currentFloor) {
           this.open();
         } else {
           this._addGoal(nFloor);
@@ -90,5 +96,13 @@ export class ControllerService {
         }
         break;
     }
+  }
+
+  public getTransitionFloor() {
+    return this._transitionFloor;
+  }
+
+  public getDoorStatus() {
+    return this._doorStatus;
   }
 }
