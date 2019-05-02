@@ -41,6 +41,13 @@ export class ControllerService {
     }
   }
 
+  addGoal(floor: string) {
+    if ((this.goals.length > 0) && (this.goals[this.goals.length - 1] === floor)) {
+      return;
+    }
+    this.goals.push(floor);
+  }
+
   go(floor: string) {
     switch (floor) {
       case '-2':
@@ -52,9 +59,9 @@ export class ControllerService {
       case '1':
       case '2':
       case '3':
-        this.goals.push(floor);
+        this.addGoal(floor);
       case '-1':
-        this.goals.push(-1);
+        this.addGoal('-1');
         this.move();
         break;
     }
