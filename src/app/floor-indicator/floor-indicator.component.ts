@@ -1,14 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import { ControllerService } from '../controller.service';
+
 @Component({
   selector: 'app-floor-indicator',
   templateUrl: './floor-indicator.component.html',
   styleUrls: ['./floor-indicator.component.scss']
 })
 export class FloorIndicatorComponent implements OnInit {
-  @Input() floor: number = 0;
-
-  constructor() { }
+  constructor(private controllerService: ControllerService) { }
 
   ngOnInit() {
   }
