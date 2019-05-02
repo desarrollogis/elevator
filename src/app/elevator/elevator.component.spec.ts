@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ElevatorComponent } from './elevator.component';
+import { InternalButtonComponent } from '../internal-button/internal-button.component';
+import { DoorComponent } from '../door/door.component';
 
 describe('ElevatorComponent', () => {
   let component: ElevatorComponent;
@@ -8,7 +10,11 @@ describe('ElevatorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ElevatorComponent ]
+      declarations: [
+        ElevatorComponent,
+        InternalButtonComponent,
+        DoorComponent
+      ]
     })
     .compileComponents();
   }));

@@ -1,11 +1,17 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { CubeComponent } from './cube/cube.component';
+import { ElevatorComponent } from './elevator/elevator.component';
+import { FloorIndicatorComponent } from './floor-indicator/floor-indicator.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        CubeComponent,
+        ElevatorComponent,
+        FloorIndicatorComponent
       ],
     }).compileComponents();
   }));
