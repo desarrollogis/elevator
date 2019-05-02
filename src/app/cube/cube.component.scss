@@ -4,4 +4,7 @@ div.cube {
 	height: 600px;
 	width: 220px;
 	padding: 10px;
+	& div.floor {
+		height: 25%;
+	}
 }
