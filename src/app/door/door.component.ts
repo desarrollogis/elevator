@@ -29,8 +29,6 @@ export class DoorComponent implements OnInit {
           setTimeout(() => {
             this.controllerService.doorStatus = 'close';
           }, 3000);
-        } else {
-          this.controllerService.move();
         }
       });
     }

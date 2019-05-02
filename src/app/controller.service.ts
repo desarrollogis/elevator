@@ -18,6 +18,9 @@ export class ControllerService {
     if (this.doorStatus === 'open') {
       return;
     }
+    if (this.transitionFloor !== this.currentFloor) {
+      return;
+    }
 
     const nextGoal = parseInt(this.goals[0], 10);
 
