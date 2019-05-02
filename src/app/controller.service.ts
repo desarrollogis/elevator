@@ -11,7 +11,20 @@ export class ControllerService {
 
   constructor() { }
 
-  move() {
+  public open() {
+    if (this.transitionFloor !== this.currentFloor) {
+      return;
+    }
+    this.doorStatus = 'open';
+  }
+
+  public close() {
+    if (this.doorStatus === 'open') {
+      this.doorStatus = 'close';
+    }
+  }
+
+  private _move() {
     if (this.goals.length < 1) {
       return;
     }
@@ -24,14 +37,9 @@ export class ControllerService {
 
     const nextGoal = this.goals[0];
 
-    if (nextGoal === -1) {
-      this.goals.shift();
-      this.doorStatus = 'open';
-      return;
-    }
     if (nextGoal === this.currentFloor) {
       this.goals.shift();
-      this.move();
+      this.doorStatus = 'open';
       return;
     }
     if (nextGoal < this.currentFloor) {
@@ -41,35 +49,32 @@ export class ControllerService {
     }
   }
 
+  public arrivedToFloor() {
+    this.currentFloor = this.transitionFloor;
+    this._move();
+  }
+
   private _addGoal(floor: number) {
     if (this.goals.findIndex(element => (element === floor)) > -1) {
       return;
     }
     this.goals.push(floor);
-    console.log(this.goals);
   }
 
   public go(floor: string) {
     const nFloor = parseInt(floor, 10);
 
     switch (nFloor) {
-      case -2:
-        if (this.doorStatus === 'open') {
-          this.doorStatus = 'close';
-        }
-        return;
       case 0:
       case 1:
       case 2:
       case 3:
-        if (nFloor != this.currentFloor) {
+        if (nFloor === this.currentFloor) {
+          this.open();
+        } else {
           this._addGoal(nFloor);
+          this._move();
         }
-      case -1:
-        if (this.doorStatus === 'close') {
-          this._addGoal(-1);
-        }
-        this.move();
         break;
     }
   }

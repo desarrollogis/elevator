@@ -25,8 +25,7 @@ export class ElevatorComponent implements OnInit {
     for (let i = 0, m = elements.length; i < m; ++i) {
       this.events = true;
       elements[i].addEventListener('transitionend', () => {
-        this.controllerService.currentFloor = this.controllerService.transitionFloor;
-        this.controllerService.move();
+        this.controllerService.arrivedToFloor();
       });
     }
   }

@@ -26,4 +26,21 @@ export class InternalButtonComponent implements OnInit {
         break;
     }
   }
+
+  click() {
+    switch (this.floor) {
+      case '-2':
+        this.controllerService.close();
+        break;
+      case '-1':
+        this.controllerService.open();
+        break;
+      case '0':
+      case '1':
+      case '2':
+      case '3':
+        this.controllerService.go(this.floor);
+        break;
+    }
+  }
 }
