@@ -42,10 +42,21 @@ export class ControllerService {
   }
 
   go(floor: string) {
-    this.goals.push(floor);
-    if (floor != '-1') {
-      this.goals.push(-1);
+    switch (floor) {
+      case '-2':
+        if (this.doorStatus === 'open') {
+          this.doorStatus = 'close';
+        }
+        return;
+      case '0':
+      case '1':
+      case '2':
+      case '3':
+        this.goals.push(floor);
+      case '-1':
+        this.goals.push(-1);
+        this.move();
+        break;
     }
-    this.move();
   }
 }
