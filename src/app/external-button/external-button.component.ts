@@ -8,11 +8,15 @@ import { ControllerService } from '../controller.service';
   styleUrls: ['./external-button.component.scss']
 })
 export class ExternalButtonComponent implements OnInit {
-  @Input() floor: number = 0;
+  @Input() floor: string = '0';
   @Input() type: string = '';
 
-  constructor(public controllerService: ControllerService) { }
+  constructor(public controllerService: ControllerService) {}
 
   ngOnInit() {
+  }
+
+  click() {
+    this.controllerService.go(this.floor);
   }
 }
