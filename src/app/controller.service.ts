@@ -24,9 +24,14 @@ export class ControllerService {
 
     const nextGoal = parseInt(this.goals[0], 10);
 
-    if (nextGoal === this.currentFloor) {
+    if (nextGoal === -1) {
       this.goals.shift();
       this.doorStatus = 'open';
+      return;
+    }
+    if (nextGoal === this.currentFloor) {
+      this.goals.shift();
+      this.move();
       return;
     }
     if (nextGoal < this.currentFloor) {
@@ -38,6 +43,7 @@ export class ControllerService {
 
   go(floor: number) {
     this.goals.push(floor);
+    this.goals.push(-1);
     this.move();
   }
 }
