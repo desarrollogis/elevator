@@ -41,7 +41,7 @@ export class ControllerService {
     if (this.goals.length < 1) {
       return;
     }
-    if (this.doorStatus === 'open') {
+    if (this.doorStatus !== 'closed') {
       return;
     }
     if (this.transitionFloor !== this.currentFloor) {
